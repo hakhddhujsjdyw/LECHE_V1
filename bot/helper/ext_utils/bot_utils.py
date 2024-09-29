@@ -249,7 +249,7 @@ def source(self):
 
 
 def get_readable_message():
-    msg = "<b>Powered by Ac Movies</b>\n\n"
+    msg = "<b>Powered by MCU Movies</b>\n\n"
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
@@ -271,7 +271,7 @@ def get_readable_message():
             MirrorStatus.STATUS_SEEDING,
             MirrorStatus.STATUS_PROCESSING,
         ]:
-            msg += f"<blockquote><code>{progress_bar(download.progress())}</code> {download.progress()}"
+            msg += f"<code>{progress_bar(download.progress())}</code> {download.progress()}"
             msg += f"\n{download.processed_bytes()} of {download.size()}"
             msg += f"\nSpeed: {download.speed()}"
             msg += f"\nEstimated: {download.eta()}"
@@ -285,9 +285,9 @@ def get_readable_message():
             msg += f"\nRatio: {download.ratio()}"
             msg += f"\nTime: {download.seeding_time()}"
         else:
-            msg += f"<blockquote>Size: {download.size()}"
-        msg += f"\nElapsed: {get_readable_time(time() - download.message.date.timestamp())}</blockquote>"
-        msg += f"\n<blockquote>/stop_{download.gid()[:8]}</blockquote>\n\n"
+            msg += f"<Size: {download.size()}"
+        msg += f"\nElapsed: {get_readable_time(time() - download.message.date.timestamp())}"
+        msg += f"\n/stop_{download.gid()[:8]}\n\n"
     if len(msg) == 0:
         return None, None
     if tasks > STATUS_LIMIT:
